@@ -16,7 +16,7 @@ import torch.nn.functional as F
 
 faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
-video_capture = cv2.VideoCapture(0)
+video_capture = cv2.VideoCapture(0,cv2.CAP_DSHOW)
 
 while True:
     # Capture frame-by-frame
@@ -29,7 +29,7 @@ while True:
         scaleFactor=1.1,
         minNeighbors=5,
         minSize=(30, 30),
-        flags=cv2.cv.CV_HAAR_SCALE_IMAGE
+        flags=cv2.CASCADE_SCALE_IMAGE
     )
 
     # Draw a rectangle around the faces

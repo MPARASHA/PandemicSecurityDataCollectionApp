@@ -94,7 +94,7 @@ while True:
         faceImg = frame[yStart:yStart+height, xStart:xStart+width]
         output = model(transformations(faceImg).unsqueeze(0).to(device))
         
-        op = output[0]
+       # op = output[0]
 
         if(op[0] - op[1] > 500):
             predicted = 0

@@ -51,6 +51,8 @@ class Net(nn.Module):
 
 #from google.colab import drive
 
+THRESH = 100
+
 font = cv2.FONT_HERSHEY_SIMPLEX
 
 faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
@@ -96,7 +98,9 @@ while True:
         
         op = output[0]
 
-        if(op[0] - op[1] > 500):
+        print(output)
+
+        if(op[0] - op[1] > THRESH):
             predicted = 0
         else:
             predicted = 1

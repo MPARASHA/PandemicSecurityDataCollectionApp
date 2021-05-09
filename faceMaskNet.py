@@ -93,10 +93,13 @@ while True:
         # predict mask label on extracted face
         faceImg = frame[yStart:yStart+height, xStart:xStart+width]
         output = model(transformations(faceImg).unsqueeze(0).to(device))
-        _, predicted = torch.max(output.data, 1)
+        
+        op = output[0]
 
-        # print(predicted)
-
+        if(op[0] - op[1] > 500):
+            predicted = 0
+        else:
+            predicted = 1
         # draw face frame
         cv2.rectangle(frame,
                       (xStart, yStart),

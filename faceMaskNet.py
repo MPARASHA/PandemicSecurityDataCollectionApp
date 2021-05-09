@@ -98,7 +98,7 @@ while True:
         
         op = output[0]
 
-        print(output)
+        # print(output)
 
         if(op[0] - op[1] > THRESH):
             predicted = 0

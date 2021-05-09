@@ -67,6 +67,7 @@ transformations = Compose([
     ToPILImage(),
     Resize((128, 128)),
     ToTensor(),
+    # transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
 ])
 
 
@@ -94,6 +95,8 @@ while True:
         output = model(transformations(faceImg).unsqueeze(0).to(device))
         _, predicted = torch.max(output.data, 1)
 
+        # print(predicted)
+
         # draw face frame
         cv2.rectangle(frame,
                       (xStart, yStart),
@@ -114,7 +117,7 @@ while True:
         # Display the resulting frame
         cv2.imshow('Video', frame)
 
-        if cv2.waitKey(2) & 0xFF == ord('q'):
+        if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
 video_capture.release()
